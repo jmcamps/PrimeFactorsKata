@@ -2,19 +2,14 @@ package cat.xampi.kata.prime
 
 object PrimeFactors {
   def generate(number: Int): List[Int] = {
-    var result = List[Int]()
-    var actual = number
-    var denominator = 2
-    while (actual > 1) {
-      while (actual % denominator == 0) {
-        actual /= denominator
-        result = result ::: List(denominator)
+    def generateFactorsRecursive(number: Int, divider: Int): List[Int] = {
+      number match {
+        case 1 => List.empty
+        case x if number % divider == 0 => divider :: generateFactorsRecursive(number / divider, 2)
+        case _ => generateFactorsRecursive(number, divider + 1)
       }
-      denominator = denominator + 1
-
     }
-    if(actual > 1) result = result ::: List(actual)
 
-    result
+    generateFactorsRecursive(number, 2)
   }
 }
