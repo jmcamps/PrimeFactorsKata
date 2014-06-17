@@ -9,15 +9,15 @@ object PrimeFactors {
   }
   
   def generate(number: Int): List[Int] = {
+    val MINIMAL_DIVIDER = 2
     @tailrec
     def generateFactorsRecursive(number: Int, divider: Int, acc: List[Int]): List[Int] = {
       number match {
         case 1 => acc.reverse
-        case x if number isDivisibleBy divider => generateFactorsRecursive(number / divider, 2, divider :: acc)
+        case x if number isDivisibleBy divider => generateFactorsRecursive(number / divider, MINIMAL_DIVIDER, divider :: acc)
         case _ => generateFactorsRecursive(number, divider + 1, acc)
       }
-    }    
-        
-    generateFactorsRecursive(number, 2, List.empty)
+    }        
+    generateFactorsRecursive(number, MINIMAL_DIVIDER, List.empty)
   }
 }
