@@ -7,12 +7,12 @@ object PrimeFactors {
     @tailrec
     def generateFactorsRecursive(number: Int, divider: Int, acc: List[Int]): List[Int] = {
       number match {
-        case 1 => List.empty
+        case 1 => acc.reverse
         case x if number % divider == 0 => generateFactorsRecursive(number / divider, 2, divider :: acc)
         case _ => generateFactorsRecursive(number, divider + 1, acc)
       }
     }
 
-    generateFactorsRecursive(number, 2, List.empty)
+    generateFactorsRecursive(number, 2, List.empty) 
   }
 }
