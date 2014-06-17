@@ -13,5 +13,9 @@ class PrimeFactorsSuite extends FunSuite{
   
   test("Prime factor for 2 should be List(2)") {
     assert(PrimeFactors.generate(2) === List(2)) 
-  }   
+  } 
+  
+  test("Prime factor for 3 should be List(3)") {
+    assert(PrimeFactors.generate(3) === List(3)) 
+  } 
 }
