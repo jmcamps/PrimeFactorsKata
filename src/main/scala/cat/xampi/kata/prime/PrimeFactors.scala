@@ -5,6 +5,7 @@ import scala.annotation.tailrec
 object PrimeFactors {
   implicit class ExtendedInt(val value: Int) extends AnyVal {
 	  def isDivisibleBy(other:Int) = value % other == 0
+	  def primeFactors: List[Int] = PrimeFactors.generate(value)
   }
   
   def generate(number: Int): List[Int] = {

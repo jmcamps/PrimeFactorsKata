@@ -6,7 +6,10 @@ import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
 class PrimeFactorsSuite extends FunSuite{
+  
   test("Prime factor for a map of random entries") {
+    // arrange
+    import PrimeFactors.ExtendedInt
     var tests = Map(
 		1  -> Nil,
 		2  -> List(2),
@@ -22,8 +25,9 @@ class PrimeFactorsSuite extends FunSuite{
 	    1820 -> List(2,2,5,7,13) 
 	)
 	
+	// act & assert
 	tests.foreach{ case (n, factors) =>
-		assert(PrimeFactors.generate(n) === factors)
+		assert(n.primeFactors === factors)
 	}
   } 
 }
