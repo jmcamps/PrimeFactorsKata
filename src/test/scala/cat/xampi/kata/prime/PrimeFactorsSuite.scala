@@ -6,28 +6,24 @@ import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
 class PrimeFactorsSuite extends FunSuite{
-
-  test("Prime factor for 1 should be empty list") {
-    assert(PrimeFactors.generate(1) === List.empty)
-  }
-  
-  test("Prime factor for 2 should be List(2)") {
-    assert(PrimeFactors.generate(2) === List(2)) 
-  } 
-  
-  test("Prime factor for 3 should be List(3)") {
-    assert(PrimeFactors.generate(3) === List(3)) 
-  } 
-  
-  test("Prime factor for 4 should be List(2,2)") {
-    assert(PrimeFactors.generate(4) === List(2,2))  
-  } 
-  
-  test("Prime factor for 6 should be List(2,3)") {
-    assert(PrimeFactors.generate(6) === List(2,3))  
-  } 
-  
-  test("Prime factor for 147 should be List(3,7,7)") {
-    assert(PrimeFactors.generate(147) === List(3,7,7)) 
+  test("Prime factor for a map of random entries") {
+    var tests = Map(
+		1  -> Nil,
+		2  -> List(2),
+		3  -> List(3),
+		4  -> List(2,2),
+		5  -> List(5),
+		6  -> List(2,3),
+		7  -> List(7),
+		8  -> List(2,2,2),
+		9  -> List(3,3),
+		10 -> List(2,5),
+		147 -> List(3,7,7),
+	    1820 -> List(2,2,5,7,13) 
+	)
+	
+	tests.foreach{ case (n, factors) =>
+		assert(PrimeFactors.generate(n) === factors)
+	}
   } 
 }
